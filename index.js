@@ -1,11 +1,14 @@
 import express from 'express';
 import mongoose from "mongoose";
+import studentRouter from './router/studentRouter.js';
+import teacherRouter from './router/teacherRouter.js';
 
-let mongoURI = "mongodb+srv://admin:1234@cluster0.6odnxti.mongodb.net/?appName=Cluster0"
+
+const mongoURI = "mongodb+srv://admin:1234@cluster0.vt2ztsl.mongodb.net/?appName=Cluster0"
 
 mongoose.connect(mongoURI).then(
     ()=>{
-        console.log("connected to mongo db")
+        console.log("connected to mongo db...")
     }
 ).catch(
     (error)=>{
@@ -13,31 +16,13 @@ mongoose.connect(mongoURI).then(
     }
 )
 
-let app=express();
+const app=express();
 
 app.use(express.json());
 
+app.use("/students", studentRouter)
 
-
-app.get('/',(req, res)=>{
-    console.log('Get request received');
-}
-);
-
-app.post('/',(req, res)=>{
-    
-    console.log(req.body);
-    console.log("post request received")
-    res.json("post request received")
-}); 
-
-app.put('/',()=>{
-    console.log('Put request received');
-});
-
-app.delete('/',()=>{
-    console.log('Delete request received');
-});
+app.use("/teachers", teacherRouter)
 
 
 
