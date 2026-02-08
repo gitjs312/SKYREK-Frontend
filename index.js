@@ -1,7 +1,6 @@
 import express from 'express';
 import mongoose from "mongoose";
-import studentRouter from './router/studentRouter.js';
-import teacherRouter from './router/teacherRouter.js';
+
 
 
 const mongoURI = "mongodb+srv://admin:1234@cluster0.vt2ztsl.mongodb.net/?appName=Cluster0"
@@ -20,9 +19,7 @@ const app=express();
 
 app.use(express.json());
 
-app.use("/students", studentRouter)
 
-app.use("/teachers", teacherRouter)
 
 
 
