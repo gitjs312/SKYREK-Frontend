@@ -26,11 +26,13 @@ const userSchema = new mongoose.Schema({
         },
         isBlocked: {
             type: Boolean,
-            default: false
+            default: false,
+            required: true
         },
         isEmailVerified: {
             type: Boolean,
-            default: false
+            default: false,
+            required: true
         },
         image: {
             type: String,
