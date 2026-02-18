@@ -13,7 +13,7 @@ export function createUser(req, res) {
     })
     user.save().then(
         ()=>{
-            res.json({
+            res.status(200).json({
                 message: "user saved successfully"
             })
         }
@@ -38,9 +38,20 @@ export function loginUser(req, res) {
             if(user==null){
                 res.status(404).json({
                     message: "user not found"
+                    
                 })
+                console.log("user not found...")
             }
-        })
-}   
-
-   
+            else{
+                const isPasswordValid = bcrypt.compareSync(req.body.password, user.password)
+                console.log(isPasswordValid)
+                console.log("user logged in successfully...")
+                res.status(200).json({
+                    message: "user logged in successfully"
+                })    
+            }
+                
+        }
+    )
+}
+    
