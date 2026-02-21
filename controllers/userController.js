@@ -56,11 +56,11 @@ export function loginUser(req, res) {
                 console.log(token);
 
                 res.json({
-                    message: "login successful"
+                    message: "login successful.correct password"
                 });
             } 
             else {
-                console.log("login unsuccessful");
+                console.log("login unsuccessful.wrong password");
             }
         }
     });
